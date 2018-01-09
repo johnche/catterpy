@@ -12,7 +12,7 @@ class ArgparseHelp(argparse.ArgumentParser):
 parser = ArgparseHelp(description='Catterpy, simplified netcat in python')
 parser.add_argument('-l', action='store_true', dest='server_socket', default=False,
         help='Specifies catterpy to listen for incoming connection.')
-parser.add_argument('-i', '--ip', type=str,
+parser.add_argument('-i', '--ip', type=str, default='localhost',
         help='Sets the host catterpy connects to')
 parser.add_argument('port', metavar='PORT', type=int,
         help='Sets server/client port, depending on the -l flag is set')
@@ -67,10 +67,7 @@ def tcp_socket_server(address):
 
 def main():
     if args.server_socket:
-        ip = '0.0.0.0'
-        if args.ip:
-            ip = args.ip
-        tcp_socket_server((ip, args.port))
+        tcp_socket_server((args.ip, args.port))
     else:
         tcp_socket_client((args.ip, args.port))
 
