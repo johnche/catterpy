@@ -38,8 +38,6 @@ def tcp_socket_client(address):
             print(data)
     except socket.error as e:
         print("Connection failed: %s" % str(e))
-    except KeyboardInterrupt:
-        pass
     finally:
         sock.close()
         print("Socket closed")
@@ -61,8 +59,6 @@ def tcp_socket_server(address):
                 print(data)
     except socket.error as e:
         print('Error: %s' % str(e))
-    except KeyboardInterrupt:
-        pass
     finally:
         sock.close()
         print('Socket closed')
