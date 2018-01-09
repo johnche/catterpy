@@ -67,7 +67,10 @@ def tcp_socket_server(address):
 
 def main():
     if args.server_socket:
-        tcp_socket_server(('localhost', args.port))
+        ip = '0.0.0.0'
+        if args.ip:
+            ip = args.ip
+        tcp_socket_server((ip, args.port))
     else:
         tcp_socket_client((args.ip, args.port))
 
