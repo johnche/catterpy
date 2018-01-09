@@ -32,9 +32,9 @@ def tcp_socket_client(address):
         print('Connected to %s' % address[0])
         start_new_thread(user_input, (sock,))
         while True:
-            data = sock.recv(1024).decode('utf-8').strip()
+            data = sock.recv(1024)
             if not data: break
-            print(data)
+            print(data.decode('utf-8').strip())
     except socket.error as e:
         print("Connection failed: %s" % str(e))
     finally:
@@ -54,8 +54,9 @@ def tcp_socket_server(address):
         start_new_thread(user_input, (conn,))
         with conn:
             while True:
-                data = conn.recv(1024).decode('utf-8').strip()
-                print(data)
+                data = conn.recv(1024)
+                if not data: break
+                print(data.decode('utf-8').strip())
     except socket.error as e:
         print('Error: %s' % str(e))
     finally:
