@@ -1,6 +1,5 @@
 import socket, argparse, sys
 from _thread import start_new_thread
-from multiprocessing import Process, cpu_count
 
 
 class ArgparseHelp(argparse.ArgumentParser):
