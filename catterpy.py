@@ -15,7 +15,7 @@ parser.add_argument('-l', action='store_true', dest='server_socket', default=Fal
 parser.add_argument('-i', '--ip', type=str,
         help='Sets the host catterpy connects to')
 parser.add_argument('port', metavar='PORT', type=int,
-        help='Sets the host endpoint')
+        help='Sets server/client port, depending on the -l flag is set')
 args = parser.parse_args()
 
 
